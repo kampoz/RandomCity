@@ -1,15 +1,16 @@
 package com.kamil.randomcity
 
-import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.support.v4.app.Fragment
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+
 
 class FragmentDetail : Fragment() {
 
-    private lateinit var viewModel: MasterViewModel
+    private lateinit var viewModel: CitiesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,6 +22,4 @@ class FragmentDetail : Fragment() {
     fun displayDetails(city: String, color: String) {
 
     }
-
-
 }

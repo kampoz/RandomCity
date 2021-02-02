@@ -1,13 +1,11 @@
 package com.kamil.randomcity
 
-import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import android.content.*
 import android.os.Bundle
+
 import android.view.View
-import android.widget.Toast
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import androidx.appcompat.app.AppCompatActivity
+
 
 class MainActivity : AppCompatActivity(), Communicator {
 
@@ -17,21 +15,11 @@ class MainActivity : AppCompatActivity(), Communicator {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // temporary without view model
-        val repository = CitiesRepository(Producer())
-
-        GlobalScope.launch(Dispatchers.Main) {
-            val cities = repository.getCities()
-            Toast.makeText(this@MainActivity, cities.toString(), Toast.LENGTH_LONG).show()
-        }
-        // end
-
         val fragmentBView = findViewById<View>(R.id.fragment_detail)
         isDualPane = fragmentBView?.visibility == View.VISIBLE
     }
 
     // when we are in tablet or in phone
-
     override fun displayDetails(city: String, color: String) {
         if (isDualPane) {
             val fragmentDetail = supportFragmentManager.findFragmentById(R.id.fragment_detail) as FragmentDetail?
@@ -43,4 +31,6 @@ class MainActivity : AppCompatActivity(), Communicator {
             startActivity(intent)
         }
     }
+
+
 }
